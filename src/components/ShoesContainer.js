@@ -6,6 +6,7 @@ import "../index.css"
 
 function ShoesContainer({pant, addShoePost}) {
     const {description, image, name, price, id} = pant
+    const nameIT = 'shoe_id'
   return (
     <Grid item xs={3}>
         <Paper sx={{background: "linear-gradient( #362706, #464E2E, #ACB992, #E9E5D6)", height: '20rem'}}>
@@ -13,7 +14,7 @@ function ShoesContainer({pant, addShoePost}) {
             {description}
             {price}
             <img src={image} width="200rem" height="auto" />
-            <Button onClick={(e)=> addShoePost(id)} variant="contained" sx={{bgcolor: "#ACB992"}} >
+            <Button onClick={(e)=> addShoePost(nameIT, id)} variant="contained" sx={{bgcolor: "#ACB992"}} >
                 Buy Shoes
             </Button>
         </Paper>

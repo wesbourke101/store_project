@@ -55,7 +55,7 @@ function App() {
 /////////////////////////////////////////////////////
 ////////////////////////////////////////////////////
 
-function addShoePost(id) {
+function addShoePost(key, id) {
    fetch(`http://localhost:9292/purchases`, {
        method: "POST",
        headers: {
@@ -63,7 +63,7 @@ function addShoePost(id) {
            Accept: "application/json"
        },
        body: JSON.stringify({
-           shoe_id: id
+           [key]: id
        })
    })
    .then( res => res.json())
