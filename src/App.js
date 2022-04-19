@@ -1,5 +1,5 @@
 import Home from './components/Home';
-import PantsCards from './components/PantsCardS';
+import PantsCards from './components/PantsCards';
 import ShirstCards from './components/ShirtsCards';
 import ShoesCard from './components/ShoesCard';
 import ShoppingCart from './components/ShoppingCart';
@@ -23,7 +23,7 @@ function App() {
   const [pantsData, setPantsData] = useState([])
   const [shirtsData, setShirtsData] = useState([])
   const [shoesData, setShoesData] = useState([])
-  const [shoppingCart, setShoppingCart] = useState([])
+  
 
   useEffect(() => {
     fetch(`http://localhost:9292/pants`)
@@ -46,17 +46,13 @@ function App() {
     .catch( error => console.log(error.message));
   }, [])
 
-  // useEffect(() => {
-  //   fetch(`http://localhost:9292/purchases`)
-  //   .then( res => res.json())
-  //   .then( data => console.log(data))
-  //   .catch( error => console.log(error.message));
-  // }, [])
 /////////////////////////////////////////////////////
 ////////////////////////////////////////////////////
 
+const [shoppingCart, setShoppingCart] = useState([])
+
 function addShoePost(key, id) {
-   fetch(`http://localhost:9292/purchases`, {
+   fetch(`http://localhost:9292/shoe-purchases`, {
        method: "POST",
        headers: {
            "Content-Type": "application/json",
@@ -71,6 +67,38 @@ function addShoePost(key, id) {
    .catch( error => console.log(error.message));
 }  
 
+function addPantPost(key, id) {
+  fetch(`http://localhost:9292/pant-purchases`, {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+      },
+      body: JSON.stringify({
+          [key]: id
+      })
+  })
+  .then( res => res.json())
+  .then( data => setShoppingCart(data))
+  .catch( error => console.log(error.message));
+}  
+
+function addShirtPost(key, id) {
+  fetch(`http://localhost:9292/shirt-purchases`, {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+      },
+      body: JSON.stringify({
+          [key]: id
+      })
+  })
+  .then( res => res.json())
+  .then( data => setShoppingCart(data))
+  .catch( error => console.log(error.message));
+}  
+
 /////////////////////////////////////////////////////
 
   return (
@@ -83,8 +111,8 @@ function addShoePost(key, id) {
           <Routes>
             <Route path="/" element={<Navigate replace to="/Home" />} />
             <Route path="Home" element={<Home />} />
-            <Route path="Shirts" element={<ShirstCards pantsData={shirtsData}/>} />
-            <Route path="Pants"element={<PantsCards pantsData={pantsData}/>} />
+            <Route path="Shirts" element={<ShirstCards addShirtPost={addShirtPost} pantsData={shirtsData}/>} />
+            <Route path="Pants"element={<PantsCards addPantPost={addPantPost} pantsData={pantsData}/>} />
             <Route path="Shoes"element={<ShoesCard addShoePost={addShoePost} pantsData={shoesData}/>} />
           </Routes>
       </BrowserRouter>

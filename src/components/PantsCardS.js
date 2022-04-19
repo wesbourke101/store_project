@@ -3,8 +3,8 @@ import PantsContainer from './PantsContainer'
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 
-function PantsCardS({pantsData}) {
-  const cardsP = pantsData.map((pant) => {return <PantsContainer pant={pant}/>})
+function PantsCards({pantsData, addPantPost}) {
+  const cardsP = pantsData.map((pant) => {return <PantsContainer addPantPost={addPantPost} pant={pant}/>})
 
   return (
     <Box padding={4}>
@@ -14,4 +14,4 @@ function PantsCardS({pantsData}) {
     </Box>
   )
 }
-export default PantsCardS
+export default PantsCards
