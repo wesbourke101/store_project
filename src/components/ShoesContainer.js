@@ -4,8 +4,8 @@ import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import "../index.css"
 
-function ShoesContainer({pant}) {
-    const {description, image, name, price} = pant
+function ShoesContainer({pant, addShoePost}) {
+    const {description, image, name, price, id} = pant
   return (
     <Grid item xs={3}>
         <Paper sx={{background: "linear-gradient( #362706, #464E2E, #ACB992, #E9E5D6)", height: '20rem'}}>
@@ -13,8 +13,8 @@ function ShoesContainer({pant}) {
             {description}
             {price}
             <img src={image} width="200rem" height="auto" />
-            <Button variant="contained" sx={{bgcolor: "#ACB992"}} >
-                Buy Shirt Now
+            <Button onClick={(e)=> addShoePost(id)} variant="contained" sx={{bgcolor: "#ACB992"}} >
+                Buy Shoes
             </Button>
         </Paper>
     </Grid>

@@ -2,10 +2,9 @@ import Home from './components/Home';
 import PantsCards from './components/PantsCardS';
 import ShirstCards from './components/ShirtsCards';
 import ShoesCard from './components/ShoesCard';
+import ShoppingCart from './components/ShoppingCart';
 import "./index.css"
-import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
+import Box from '@mui/material/Box';  
 import React, { useState, useEffect } from 'react';
   import {
     BrowserRouter,
@@ -20,10 +19,11 @@ import NavBar from './components/NavBar';
 // to run server: json-server --watch db.json --port 3001
 
 function App() {
-
+//////////////////////////////////////////////////////////////
   const [pantsData, setPantsData] = useState([])
   const [shirtsData, setShirtsData] = useState([])
   const [shoesData, setShoesData] = useState([])
+  const [shoppingCart, setShoppingCart] = useState([])
 
   useEffect(() => {
     fetch(`http://localhost:9292/pants`)
@@ -46,25 +46,46 @@ function App() {
     .catch( error => console.log(error.message));
   }, [])
 
+  // useEffect(() => {
+  //   fetch(`http://localhost:9292/purchases`)
+  //   .then( res => res.json())
+  //   .then( data => console.log(data))
+  //   .catch( error => console.log(error.message));
+  // }, [])
+/////////////////////////////////////////////////////
+////////////////////////////////////////////////////
+
+function addShoePost(id) {
+   fetch(`http://localhost:9292/purchases`, {
+       method: "POST",
+       headers: {
+           "Content-Type": "application/json",
+           Accept: "application/json"
+       },
+       body: JSON.stringify({
+           shoe_id: id
+       })
+   })
+   .then( res => res.json())
+   .then( data => setShoppingCart(data))
+   .catch( error => console.log(error.message));
+}  
+
+/////////////////////////////////////////////////////
+
   return (
     <Box>
       <BrowserRouter> 
-        <NavBar />
-        {/* this will be where the checkout is. */}
+        <NavBar/>
           <Box>
-            <Grid container spaceing={1}>
-              <Grid item xs={12}>
-                <Paper sx={{ background: "rgba(0,0,0,0.5)", height: '5rem'}}>
-                </Paper>
-              </Grid>  
-            </Grid>
+            <ShoppingCart shoppingCart={shoppingCart} />
           </Box>
           <Routes>
             <Route path="/" element={<Navigate replace to="/Home" />} />
             <Route path="Home" element={<Home />} />
             <Route path="Shirts" element={<ShirstCards pantsData={shirtsData}/>} />
             <Route path="Pants"element={<PantsCards pantsData={pantsData}/>} />
-            <Route path="Shoes"element={<ShoesCard pantsData={shoesData}/>} />
+            <Route path="Shoes"element={<ShoesCard addShoePost={addShoePost} pantsData={shoesData}/>} />
           </Routes>
       </BrowserRouter>
     </Box>      

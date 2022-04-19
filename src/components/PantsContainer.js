@@ -14,7 +14,7 @@ function PantsContainer({pant}) {
             <h1>{name}</h1>
             {description}
             {price}
-            <img src={image} width="200rem" height="auto" />
+            <img src={image} width='auto' height='170' />
             <Button variant="contained" sx={{bgcolor: "#ACB992"}} >
                 Buy Pants Now
             </Button>
