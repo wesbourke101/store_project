@@ -1,0 +1,19 @@
+body {
+    /* background-image: url("https://cdn.pixabay.com/photo/2018/08/21/23/29/forest-3622519__340.jpg"); */
+    /* background-image: url("https://wallpapercave.com/dwp2x/wp1871755.jpg"); */
+    /* background-image: url("https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832_1280.jpg"); */
+    /* background-image: url("https://c.wallhere.com/photos/c5/60/1280x1024_px_Climbing_nature_rock-732862.jpg!d"); */
+    /* background-image: url("https://c.wallhere.com/photos/e0/0d/1500x804_px_clouds_forest_landscape_Lights_Long_Exposure_mountains_nature-573644.jpg!d"); */
+    background-image: url("https://c.wallhere.com/photos/6d/a5/6000x4000_px_Adobe_mountains_nature_Simple_vector_Vector_graphics-1411457.jpg!d");
+    /* background-image: url("https://c.wallhere.com/photos/11/85/illustration_landscape_digital_art_mountains_Firewatch_video_games_nature_artwork-1459141.jpg!d  "); */
+    background-attachment: fixed;
+    background-position: center;
+}
+
+h1{
+    color: #E9E5D6;
+}
+
+input {
+    background-color: #E9E5D6;
+}
