@@ -1,6 +1,7 @@
 import Home from './components/Home';
 import PantsCards from './components/PantsCardS';
 import ShirstCards from './components/ShirtsCards';
+import ShoesCard from './components/ShoesCard';
 import "./index.css"
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
@@ -21,11 +22,27 @@ import NavBar from './components/NavBar';
 function App() {
 
   const [pantsData, setPantsData] = useState([])
+  const [shirtsData, setShirtsData] = useState([])
+  const [shoesData, setShoesData] = useState([])
 
   useEffect(() => {
     fetch(`http://localhost:9292/pants`)
     .then( res => res.json())
     .then( data => setPantsData(data))
+    .catch( error => console.log(error.message));
+  }, [])
+
+  useEffect(() => {
+    fetch(`http://localhost:9292/shirts`)
+    .then( res => res.json())
+    .then( data => setShirtsData(data))
+    .catch( error => console.log(error.message));
+  }, [])
+
+  useEffect(() => {
+    fetch(`http://localhost:9292/shoes`)
+    .then( res => res.json())
+    .then( data => setShoesData(data))
     .catch( error => console.log(error.message));
   }, [])
 
@@ -45,8 +62,9 @@ function App() {
           <Routes>
             <Route path="/" element={<Navigate replace to="/Home" />} />
             <Route path="Home" element={<Home />} />
-            <Route path="Shirts" element={<ShirstCards pantsData={pantsData}/>} />
+            <Route path="Shirts" element={<ShirstCards pantsData={shirtsData}/>} />
             <Route path="Pants"element={<PantsCards pantsData={pantsData}/>} />
+            <Route path="Shoes"element={<ShoesCard pantsData={shoesData}/>} />
           </Routes>
       </BrowserRouter>
     </Box>      

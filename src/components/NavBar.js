@@ -18,7 +18,7 @@ import {
     Link
   } from "react-router-dom";
 
-const pages = ['Home', 'Shirts', 'Pants'];
+const pages = ['Home', 'Shirts', 'Pants', 'Shoes'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const NavBar = () => {
@@ -92,12 +92,14 @@ const NavBar = () => {
           >
             LOGO
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          <Box l={1} sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, gridGap: '1em' }}>
             {pages.map((page) => (
               <Button
+                variant="contained"
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                
+                sx={{ my: 2, color: 'white', display: 'block', backgroundColor: '#ACB992' }}
               >
                 <Link to={`/${page}`} >{page}</Link></Button>
             ))}
