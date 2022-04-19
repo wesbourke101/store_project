@@ -10,7 +10,7 @@ import React, { useState, useEffect } from 'react';
     BrowserRouter,
     Routes,
     Route,
-    Link
+    Navigate
   } from "react-router-dom";
 import NavBar from './components/NavBar';
 
@@ -29,7 +29,6 @@ function App() {
     .catch( error => console.log(error.message));
   }, [])
 
-
   return (
     <Box>
       <BrowserRouter> 
@@ -44,6 +43,7 @@ function App() {
             </Grid>
           </Box>
           <Routes>
+            <Route path="/" element={<Navigate replace to="/Home" />} />
             <Route path="Home" element={<Home />} />
             <Route path="Shirts" element={<ShirstCards pantsData={pantsData}/>} />
             <Route path="Pants"element={<PantsCards pantsData={pantsData}/>} />
