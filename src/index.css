@@ -17,3 +17,11 @@ h1{
 input {
     background-color: #E9E5D6;
 }
+
+.wes {
+    display: in-line
+}
+
+#cartOne {
+    text-align: right;
+}

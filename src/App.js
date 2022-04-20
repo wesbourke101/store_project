@@ -23,6 +23,14 @@ function App() {
   const [pantsData, setPantsData] = useState([])
   const [shirtsData, setShirtsData] = useState([])
   const [shoesData, setShoesData] = useState([])
+  const [shoppingCartShoes, setShoppingCartShoes] = useState([])
+  const [shoppingCartShirts, setShoppingCartShirts] = useState([])
+  const [shoppingCartPants, setShoppingCartPants] = useState([])
+  const [shoppingCart, setShoppingCart] = useState([])
+  const [cartObject, setCartObject] = useState([])
+
+  console.log(shoppingCartShirts)
+
   
 
   useEffect(() => {
@@ -46,10 +54,39 @@ function App() {
     .catch( error => console.log(error.message));
   }, [])
 
+  useEffect(() => {
+    fetch(`http://localhost:9292/purchases`)
+    .then( res => res.json())
+    .then( data => setCartObject(data))
+    .catch( error => console.log(error.message));
+  }, [shoppingCart])
+
+  useEffect(() => {
+    fetch(`http://localhost:9292/shoes-cart`)
+    .then( res => res.json())
+    .then( data => setShoppingCartShoes(data))
+    .catch( error => console.log(error.message));
+  }, [shoppingCart])
+
+
+  useEffect(() => {
+    fetch(`http://localhost:9292/shirts-cart`)
+    .then( res => res.json())
+    .then( data => setShoppingCartShirts(data))
+    .catch( error => console.log(error.message));
+  }, [shoppingCart])
+
+  useEffect(() => {
+    fetch(`http://localhost:9292/pants-cart`)
+    .then( res => res.json())
+    .then( data => setShoppingCartPants(data))
+    .catch( error => console.log(error.message));
+  }, [shoppingCart])
+
 /////////////////////////////////////////////////////
 ////////////////////////////////////////////////////
 
-const [shoppingCart, setShoppingCart] = useState([])
+
 
 function addShoePost(key, id) {
    fetch(`http://localhost:9292/shoe-purchases`, {
@@ -98,15 +135,24 @@ function addShirtPost(key, id) {
   .then( data => setShoppingCart(data))
   .catch( error => console.log(error.message));
 }  
-
 /////////////////////////////////////////////////////
+/////////////////////////////////////////////////////
+function handleDeleteClick(e) {
+  fetch(`http://localhost:9292/delete-purchases/${e.target.id}`, {
+      method: "DELETE"
+  })
+  .then(res => res.json())
+  .then(data => setShoppingCart(data))
+  .catch( error => console.log(error.message));
+}
+////////////////////////////////////////////////////
 
   return (
     <Box>
       <BrowserRouter> 
         <NavBar/>
           <Box>
-            <ShoppingCart shoppingCart={shoppingCart} />
+            <ShoppingCart cartObject={cartObject} handleDeleteClick={handleDeleteClick} shoppingCartPants={shoppingCartPants} shoppingCartShirts={shoppingCartShirts} shoppingCartShoes={shoppingCartShoes} />
           </Box>
           <Routes>
             <Route path="/" element={<Navigate replace to="/Home" />} />
