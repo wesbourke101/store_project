@@ -139,6 +139,10 @@ function addShirtPost(key, id) {
 }  
 /////////////////////////////////////////////////////
 /////////////////////////////////////////////////////
+const [open, setOpen] = useState(false);
+const handleOpen = () => setOpen(true);
+const handleClose = () => setOpen(false);
+
 function handleDeleteClick(e) {
   fetch(`http://localhost:9292/delete-purchases/${e.target.id}`, {
       method: "DELETE"
@@ -149,7 +153,7 @@ function handleDeleteClick(e) {
 }
 
 function handleCheckOut() {
-  <ModalBox />
+  handleClose()
   fetch(`http://localhost:9292/delete-all`, {
       method: "DELETE"
   })
@@ -164,7 +168,7 @@ function handleCheckOut() {
       <BrowserRouter> 
         <NavBar/>
           <Box>
-            <ShoppingCart handleCheckOut={handleCheckOut} cartObject={cartObject} handleDeleteClick={handleDeleteClick} shoppingCartPants={shoppingCartPants} shoppingCartShirts={shoppingCartShirts} shoppingCartShoes={shoppingCartShoes} />
+            <ShoppingCart open={open} handleClose={handleClose} handleOpen={handleOpen} setOpen={setOpen} handleCheckOut={handleCheckOut} cartObject={cartObject} handleDeleteClick={handleDeleteClick} shoppingCartPants={shoppingCartPants} shoppingCartShirts={shoppingCartShirts} shoppingCartShoes={shoppingCartShoes} />
           </Box>
           <Routes>
             <Route path="/" element={<Navigate replace to="/Home" />} />

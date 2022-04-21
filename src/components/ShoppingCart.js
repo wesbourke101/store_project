@@ -7,13 +7,14 @@ import "../index.css"
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import TextField from '@mui/material/TextField';
 
 
-function ShoppingCart({handleCheckOut, cartObject, shoppingCartShoes, shoppingCartShirts, shoppingCartPants, handleDeleteClick}) {
+function ShoppingCart({open,handleOpen, handleClose, setOpen, handleCheckOut, cartObject, shoppingCartShoes, shoppingCartShirts, shoppingCartPants, handleDeleteClick}) {
 
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  // const [open, setOpen] = useState(false);
+  // const handleOpen = () => setOpen(true);
+  // const handleClose = () => setOpen(false);
 
   const style = {
     position: 'absolute',
@@ -78,8 +79,11 @@ function ShoppingCart({handleCheckOut, cartObject, shoppingCartShoes, shoppingCa
                 >
                   <Box sx={style}>
                     <Typography id="modal-modal-title" variant="h6" component="h2">
-                      Text in a modal
+                      hey
                     </Typography>
+                    <Box>
+                      <TextField label="Filled success" variant="filled" color="success" focused />
+                    </Box>
                     <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                       Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
                     </Typography>
