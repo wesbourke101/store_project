@@ -24,7 +24,8 @@ input {
 
 #cartOne {
     
-    background-color: #E9E5D6;
+    
+    color: #E9E5D6;
 }
 
 div.scroll {
@@ -48,6 +49,8 @@ div.MuiPaper-root {
     padding-top: .2rem;
 }
 
-#shoppingCartCheckOut {
+h2#shoppingCartCheckOut {
     color: #E9E5D6;
+    margin-bottom: -1rem;
+    margin-top: .1rem;
 }

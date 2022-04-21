@@ -3,6 +3,7 @@ import PantsCards from './components/PantsCards';
 import ShirstCards from './components/ShirtsCards';
 import ShoesCard from './components/ShoesCard';
 import ShoppingCart from './components/ShoppingCart';
+import ModalBox from './components/ModalBox';
 import "./index.css"
 import Box from '@mui/material/Box';  
 import React, { useState, useEffect } from 'react';
@@ -13,6 +14,7 @@ import React, { useState, useEffect } from 'react';
     Navigate
   } from "react-router-dom";
 import NavBar from './components/NavBar';
+import { Modal } from '@mui/material';
 
 
 // to install json run this npm install :npm install -g json-server
@@ -145,6 +147,16 @@ function handleDeleteClick(e) {
   .then(data => setShoppingCart(data))
   .catch( error => console.log(error.message));
 }
+
+function handleCheckOut() {
+  <ModalBox />
+  fetch(`http://localhost:9292/delete-all`, {
+      method: "DELETE"
+  })
+  .then(res => res.json())
+  .then(data => setShoppingCart(data))
+  .catch( error => console.log(error.message));
+}
 ////////////////////////////////////////////////////
 
   return (
@@ -152,7 +164,7 @@ function handleDeleteClick(e) {
       <BrowserRouter> 
         <NavBar/>
           <Box>
-            <ShoppingCart cartObject={cartObject} handleDeleteClick={handleDeleteClick} shoppingCartPants={shoppingCartPants} shoppingCartShirts={shoppingCartShirts} shoppingCartShoes={shoppingCartShoes} />
+            <ShoppingCart handleCheckOut={handleCheckOut} cartObject={cartObject} handleDeleteClick={handleDeleteClick} shoppingCartPants={shoppingCartPants} shoppingCartShirts={shoppingCartShirts} shoppingCartShoes={shoppingCartShoes} />
           </Box>
           <Routes>
             <Route path="/" element={<Navigate replace to="/Home" />} />
