@@ -23,5 +23,31 @@ input {
 }
 
 #cartOne {
-    text-align: right;
+    
+    background-color: #E9E5D6;
+}
+
+div.scroll {
+    margin: 4rem, 4rem;
+    padding: -1rem;
+    /* background-color: #464E2E; */
+    background-color: rgba(70, 78, 46, .4);
+    width: 48rem;
+    height: 9.5rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    position:relative; top: .25rem
+}
+
+#shoppingCardId {
+    padding-top: 1rem;
+}
+
+div.MuiPaper-root {
+    padding-top: .2rem;
+}
+
+#shoppingCartCheckOut {
+    color: #E9E5D6;
 }
