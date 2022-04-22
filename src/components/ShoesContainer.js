@@ -20,5 +20,4 @@ function ShoesContainer({pant, addShoePost}) {
     </Grid>
   )
 }
-
 export default ShoesContainer

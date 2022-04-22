@@ -20,5 +20,4 @@ function ShirtsContainer({pant, addShirtPost}) {
     </Grid>
   )
 }
-
 export default ShirtsContainer

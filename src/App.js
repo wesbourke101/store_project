@@ -33,8 +33,6 @@ function App() {
 
   console.log(shoppingCartShirts)
 
-  
-
   useEffect(() => {
     fetch(`http://localhost:9292/pants`)
     .then( res => res.json())
@@ -87,8 +85,6 @@ function App() {
 
 /////////////////////////////////////////////////////
 ////////////////////////////////////////////////////
-
-
 
 function addShoePost(key, id) {
    fetch(`http://localhost:9292/shoe-purchases`, {
@@ -162,7 +158,6 @@ function handleCheckOut() {
   .catch( error => console.log(error.message));
 }
 ////////////////////////////////////////////////////
-
   return (
     <Box>
       <BrowserRouter> 

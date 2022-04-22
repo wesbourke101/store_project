@@ -8,6 +8,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import TextField from '@mui/material/TextField';
+import { bgcolor } from '@mui/system';
 
 
 function ShoppingCart({open,handleOpen, handleClose, setOpen, handleCheckOut, cartObject, shoppingCartShoes, shoppingCartShirts, shoppingCartPants, handleDeleteClick}) {
@@ -52,7 +53,6 @@ function ShoppingCart({open,handleOpen, handleClose, setOpen, handleCheckOut, ca
     return <div ><h4>{purchase.shoe?.name || purchase.shirt?.name || purchase.pant?.name}</h4><h5>{purchase.shoe?.description || purchase.shirt?.description || purchase.pant?.description}</h5><Button sx={{bgcolor: "#464E2E"}} id={purchase.id} onClick={handleDeleteClick} variant="contained">Delete</Button> </div>
   })
   return (
-    
     <Grid id="gridStuff"container sx={{p: '1rem'}}>
         <Grid item xs={3} sx={{px: .5, py: .5}}>
           <Paper sx={{ background: "rgba(0,0,0,0.5)", height: '10rem'}}>
@@ -79,13 +79,18 @@ function ShoppingCart({open,handleOpen, handleClose, setOpen, handleCheckOut, ca
                 >
                   <Box sx={style}>
                     <Typography id="modal-modal-title" variant="h6" component="h2">
-                      hey
+                      Enter Purchase Information
                     </Typography>
                     <Box>
-                      <TextField label="Filled success" variant="filled" color="success" focused />
+                      <TextField label="Full Name" variant="filled" color="success" focused /> 
+                      <TextField label="Card Number" variant="filled" color="success" focused />                 
+                      <TextField label="Expiration" variant="filled" color="success" focused />                 
+                      <TextField label="Security Code" variant="filled" color="success" focused />
+                      <TextField label="Address" variant="filled" color="success" focused />
+                      <TextField label="Zip Code" variant="filled" color="success" focused />
                     </Box>
                     <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                      Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+                      
                     </Typography>
                       <Button onClick={handleCheckOut} variant="contained" sx={{bgcolor: "#464E2E"}}>Complete Purchase</Button>
                   </Box>
@@ -102,7 +107,5 @@ function ShoppingCart({open,handleOpen, handleClose, setOpen, handleCheckOut, ca
         </Grid>
     </Grid>
   )
-
 }
-
 export default ShoppingCart

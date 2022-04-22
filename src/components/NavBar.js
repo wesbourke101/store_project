@@ -17,7 +17,6 @@ import {
     Route,
     Link
   } from "react-router-dom";
-
 const pages = ['Home', 'Shirts', 'Pants', 'Shoes'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
@@ -52,7 +51,6 @@ const NavBar = () => {
           >
             CLIMBING CLOTHES
           </Typography>
-
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"

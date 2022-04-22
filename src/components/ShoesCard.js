@@ -13,5 +13,4 @@ function ShirtsCards({pantsData, addShoePost}) {
     </Box>
   )
 }
-
 export default ShirtsCards

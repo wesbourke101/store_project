@@ -21,5 +21,4 @@ function PantsContainer({pant, addPantPost}) {
     </Grid>
   )
 }
-
 export default PantsContainer
