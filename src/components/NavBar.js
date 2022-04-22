@@ -11,6 +11,7 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
+import TextField from '@mui/material/TextField';
 import {
     BrowserRouter,
     Routes,
@@ -20,7 +21,7 @@ import {
 const pages = ['Home', 'Shirts', 'Pants', 'Shoes'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
-const NavBar = () => {
+const NavBar = ({filterSearch, searchState}) => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -101,7 +102,10 @@ const NavBar = () => {
               >
                 <Link to={`/${page}`} >{page}</Link></Button>
             ))}
-            <input size='50' type='text'></input>
+
+            {/* /////////////////////////////////////////////////////////////////////// */}
+            <TextField onChange={(e) => filterSearch(e)} value={searchState} label="Search" variant="outlined" color="success" focused/>
+            {/* /////////////////////////////////////////////////////////////////////// */}
           </Box>
           
           <Box sx={{ flexGrow: 0 }}>

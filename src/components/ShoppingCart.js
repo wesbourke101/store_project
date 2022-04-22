@@ -49,28 +49,26 @@ function ShoppingCart({open,handleOpen, handleClose, setOpen, handleCheckOut, ca
   let totalItems = totalItemsInCart()
   let total = runTotals()
   const shirtMap = cartObject.map(purchase => {
-    // console.log(purchase.name)
-    return <div ><h4>{purchase.shoe?.name || purchase.shirt?.name || purchase.pant?.name}</h4><h5>{purchase.shoe?.description || purchase.shirt?.description || purchase.pant?.description}</h5><Button sx={{bgcolor: "#464E2E"}} id={purchase.id} onClick={handleDeleteClick} variant="contained">Delete</Button> </div>
+    return <div style={{border: 'solid 2px', color: '#ACB992', padding: '.5rem'}}><h4>{purchase.shoe?.name || purchase.shirt?.name || purchase.pant?.name}</h4><h5>{purchase.shoe?.description || purchase.shirt?.description || purchase.pant?.description}</h5><Button sx={{bgcolor: "#464E2E"}} id={purchase.id} onClick={handleDeleteClick} variant="contained">Delete</Button> </div>
   })
   return (
-    <Grid id="gridStuff"container sx={{p: '1rem'}}>
+    <Grid id="gridStuff"container>
         <Grid item xs={3} sx={{px: .5, py: .5}}>
-          <Paper sx={{ background: "rgba(0,0,0,0.5)", height: '10rem'}}>
+          <Paper sx={{ background: "rgba(0,0,0,0.5)"}}>
             <h2 id="shoppingCartCheckOut">Shopping Cart</h2>
             <br/>
-            <h7 id="cartOne" >Total # Shirts: {shirtsCount}  </h7>
+            <h6 id="cartOne" >Total # Shirts: {shirtsCount}  </h6>
             <br/>
-            <h7 id="cartOne" >Total # Pants: {pantsCount}  </h7>
+            <h6 id="cartOne" >Total # Pants: {pantsCount}  </h6>
             <br/>
-            <h7 id="cartOne" >Total # Shoes: {shoesCount}  </h7>
+            <h6 id="cartOne" >Total # Shoes: {shoesCount}  </h6>
             <br/>
-            <h7 id="cartOne" >Total Items: {totalItems}  </h7>
+            <h6 id="cartOne" >Total Items: {totalItems}  </h6>
             <br/>
-            <h7 id="cartOne" >Total $: {total}.00  </h7>
+            <h6 id="cartOne" >Total $: {total}.00  </h6>
             <br/>
-            {/* <Button onClick={handleCheckOut} variant="contained" sx={{bgcolor: "#464E2E"}}>Checkout</Button> */}
             <div>
-              <Button onClick={handleOpen}>Checkout</Button>
+              <Button onClick={handleOpen} variant="contained" sx={{bgcolor: "#464E2E"}}>Checkout</Button>
                 <Modal
                   open={open}
                   onClose={handleClose}
@@ -78,7 +76,7 @@ function ShoppingCart({open,handleOpen, handleClose, setOpen, handleCheckOut, ca
                   aria-describedby="modal-modal-description"
                 >
                   <Box sx={style}>
-                    <Typography id="modal-modal-title" variant="h6" component="h2">
+                    <Typography id="modal-modal-title" variant="h6" component="h2" sx={{color: '#E9E5D6'}}>
                       Enter Purchase Information
                     </Typography>
                     <Box>
@@ -89,10 +87,7 @@ function ShoppingCart({open,handleOpen, handleClose, setOpen, handleCheckOut, ca
                       <TextField label="Address" variant="filled" color="success" focused />
                       <TextField label="Zip Code" variant="filled" color="success" focused />
                     </Box>
-                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                      
-                    </Typography>
-                      <Button onClick={handleCheckOut} variant="contained" sx={{bgcolor: "#464E2E"}}>Complete Purchase</Button>
+                      <Button onClick={handleCheckOut} variant="contained" sx={{bgcolor: "#ACB992"}}>Complete Purchase</Button>
                   </Box>
                 </Modal>
             </div>
@@ -100,7 +95,7 @@ function ShoppingCart({open,handleOpen, handleClose, setOpen, handleCheckOut, ca
         </Grid>  
         <Grid item xs={9} sx={{px: 1, py: .5}}>
           <Paper sx={{ background: "rgba(0,0,0,0.5)", height: '10rem'}}>
-              <div class="scroll" style={{display: 'flex'}}>
+              <div className="scroll" style={{display: 'flex'}}>
                 {shirtMap}
               </div>
           </Paper>  

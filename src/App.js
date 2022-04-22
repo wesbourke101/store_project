@@ -31,8 +31,6 @@ function App() {
   const [shoppingCart, setShoppingCart] = useState([])
   const [cartObject, setCartObject] = useState([])
 
-  console.log(shoppingCartShirts)
-
   useEffect(() => {
     fetch(`http://localhost:9292/pants`)
     .then( res => res.json())
@@ -158,19 +156,26 @@ function handleCheckOut() {
   .catch( error => console.log(error.message));
 }
 ////////////////////////////////////////////////////
+const [searchState, setSearchState] = useState("")
+function filterSearch(e) {
+  setSearchState(e.target.value)
+
+
+}
+
   return (
     <Box>
       <BrowserRouter> 
-        <NavBar/>
+        <NavBar filterSearch={filterSearch} searchState={searchState}/>
           <Box>
             <ShoppingCart open={open} handleClose={handleClose} handleOpen={handleOpen} setOpen={setOpen} handleCheckOut={handleCheckOut} cartObject={cartObject} handleDeleteClick={handleDeleteClick} shoppingCartPants={shoppingCartPants} shoppingCartShirts={shoppingCartShirts} shoppingCartShoes={shoppingCartShoes} />
           </Box>
           <Routes>
             <Route path="/" element={<Navigate replace to="/Home" />} />
             <Route path="Home" element={<Home />} />
-            <Route path="Shirts" element={<ShirstCards addShirtPost={addShirtPost} pantsData={shirtsData}/>} />
-            <Route path="Pants"element={<PantsCards addPantPost={addPantPost} pantsData={pantsData}/>} />
-            <Route path="Shoes"element={<ShoesCard addShoePost={addShoePost} pantsData={shoesData}/>} />
+            <Route path="Shirts" element={<ShirstCards searchState={searchState} addShirtPost={addShirtPost} pantsData={shirtsData}/>} />
+            <Route path="Pants"element={<PantsCards searchState={searchState} addPantPost={addPantPost} pantsData={pantsData}/>} />
+            <Route path="Shoes"element={<ShoesCard searchState={searchState} addShoePost={addShoePost} pantsData={shoesData}/>} />
           </Routes>
       </BrowserRouter>
     </Box>      

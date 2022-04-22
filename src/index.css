@@ -23,9 +23,11 @@ input {
 }
 
 #cartOne {
-    
-    
+    font-size: 1em;
     color: #E9E5D6;
+    padding: 0;
+    margin: -.65rem;
+
 }
 
 div.scroll {
@@ -43,6 +45,7 @@ div.scroll {
 
 #shoppingCardId {
     padding-top: 1rem;
+
 }
 
 div.MuiPaper-root {
@@ -51,10 +54,16 @@ div.MuiPaper-root {
 
 h2#shoppingCartCheckOut {
     color: #E9E5D6;
-    margin-bottom: -1rem;
+    margin-bottom: .05rem;
     margin-top: .1rem;
 }
 
 div.css-1wnsr1i {
     background-color: rgba(70, 78, 46, 1);
+}
+
+
+input.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input{
+    color: #E9E5D6;
+    
 }
