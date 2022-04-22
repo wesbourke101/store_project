@@ -67,3 +67,10 @@ input.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input{
     color: #E9E5D6;
     
 }
+
+label.css-3v5nb6-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
+    color: #E9E5D6;
+}
+.css-kzf2d7-MuiInputBase-root-MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: #E9E5D6 !important;
+}
